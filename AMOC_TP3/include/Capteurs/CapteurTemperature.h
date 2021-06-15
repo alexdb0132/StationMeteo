@@ -4,9 +4,12 @@
 class CapteurTemperature
 {
     private:
-        CapteurProxy* m_proxy;
+        CapteurProxy* m_proxyAir;
+        CapteurProxy* m_proxyEau;
     public:
-        CapteurTemperature(CapteurProxy* p_proxy);
+        CapteurTemperature(CapteurProxy* p_proxyAir,CapteurProxy* p_proxyEau);
         String AfficherTemperatureAir();
+        String AfficherTemperatureEau();
         float GetTemperatureAir();
+        float GetTemperatureEau();
 };
