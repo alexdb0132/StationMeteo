@@ -7,10 +7,7 @@
 #include "CapteursProxy/CapteurHumiditeProxyBME280.h"
 #include "CapteursProxy/CapteurPressionProxyBME280.h"
 #include "CapteursProxy/CapteurTemperatureAirProxyBME280.h"
-
-#include <WiFi.h>
-#include <MQTT.h>
-
+#include "CapteursProxy/CapteurTemperatureEauProxyDS18B20.h"
 CapteurHumidite* humidite;
 CapteurPression* pression;
 CapteurTemperature* temp;
@@ -54,19 +51,7 @@ void messageReceived(String &topic, String &payload) {
 void setup() {
   /*humidite = new CapteurHumidite(new CapteurHumiditeProxyBME280(0x76));
   pression = new CapteurPression(new CapteurPressionProxyBME280(0x76));
-  temp = new CapteurTemperature(new CapteurTemperatureAirProxyBME280(0x76));*/
-  
-  Serial.begin(115200);
-  WiFi.begin(ssid, pass);
-
-  // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported
-  // by Arduino. You need to set the IP address directly.
-  //
-  // MQTT brokers usually use port 1883 for secure connections.
-  client.begin("public.cloud.shiftr.io", 1883, net);
-  client.onMessage(messageReceived);
-
-  connect();
+  temp = new CapteurTemperature(new CapteurTemperatureAirProxyBME280(0x76),new CapteurTemperatureEauProxyDS18B20(14));
 }
 
 void loop() {
@@ -85,5 +70,6 @@ void loop() {
   /*Serial.println("humidite :" + humidite->AfficherHumidite());
   Serial.println("pression :" + pression->AfficherPressionAir());
   Serial.println("temperature :" + temp->AfficherTemperatureAir());
-  delay(500);*/
+  Serial.println("temperature Eau:" + temp->AfficherTemperatureEau());
+  delay(1000);
 }
