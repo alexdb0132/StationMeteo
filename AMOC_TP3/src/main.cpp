@@ -12,7 +12,7 @@
 #include "Capteurs/CapteurPression.h"
 #include "Capteurs/CapteurTemperature.h"
 #include <WiFi.h>
-#include "Mqtt/PubSub.h"
+#include <PubSubClient.h>
 
 /* test Mqtt + temp*/
 CapteurTemperature* temp;
@@ -20,17 +20,28 @@ const char ssid[] = "iPhone de kevin";
 const char pass[] = "12345678";
 
 WiFiClient* net;
-PubSub* mqtt;
+PubSubClient* mqtt;
 
 void setup() {
   temp = new CapteurTemperature(new CapteurTemperatureAirProxyBME280(0x76),new CapteurTemperatureEauProxyDS18B20(14));
   net = new WiFiClient();
   Serial.begin(115200);
   WiFi.begin(ssid, pass);
-    mqtt = new PubSub(net,"172.20.10.5");
+
+  while(WiFi.status() != WL_CONNECTED)
+  {
+    Serial.print(".");
+    delay(1000);
+  }
+  Serial.println(WiFi.localIP());
+
+  mqtt = new PubSubClient(*net);
+  mqtt->setServer(IPAddress(172,20,10,4), 1883);
+  mqtt->connect("esp32");
 }
 
 void loop(){
+
   mqtt->publish("/hello",temp->AfficherTemperatureAir().c_str());
   delay(5000);
 }
