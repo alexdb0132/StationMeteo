@@ -7,14 +7,14 @@
 #include "Capteurs/CapteurTemperature.h"
 #include <WiFi.h>
 #include "Mqtt/PubSub.h"
-#include "./WifiMan/WifiAccessPoint.h"
+#include "./WifiConfig/WifiConfig.h"
 
 
 
 /* test wifiManager*/
-WifiAccessPoint* wifiman;                        
+WifiConfig* wifiman;                        
 void setup() {
-  wifiman = new WifiAccessPoint();
+  wifiman = new WifiConfig();
 }
 void loop() {
   wifiman->Tick();
