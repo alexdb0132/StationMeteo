@@ -2,7 +2,7 @@
 
 WifiConfig::WifiConfig()
 {
-    this->m_wifiManager.erase();
+    //this->m_wifiManager.erase();
     this->m_adresseIPPortail = new IPAddress(192,168,23,1);
     this->m_passerellePortail = new IPAddress(192,168,23,1);
     this->m_masqueReseauPortail = new IPAddress(25,255,255,0);
@@ -28,11 +28,5 @@ WifiConfig::WifiConfig()
         this->m_serveruWeb.begin();
         Serial.println("Connecté au réseau : " + WiFi.SSID() +
                    " avec l'adresse : " + WiFi.localIP().toString());
-    }
-}
-void WifiConfig::Tick()
-{
-    if(WiFi.isConnected()){
-        this->m_serveruWeb.handleClient();
     }
 }

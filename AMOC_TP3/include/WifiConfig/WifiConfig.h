@@ -6,7 +6,7 @@ class WifiConfig
     private:
         WiFiManager m_wifiManager;                                          
         char const* SSIDProtail = "bateau";
-        char const* motPasseAPortail = "Bonjour01";
+        char const* motPasseAPortail = "BSC3000";
         IPAddress* m_adresseIPPortail;
         IPAddress* m_passerellePortail;
         IPAddress* m_masqueReseauPortail;
@@ -15,5 +15,4 @@ class WifiConfig
 
     public:
         WifiConfig();
-        void Tick();
 };

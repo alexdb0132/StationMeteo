@@ -1,14 +1,15 @@
-#pragma once
-#include <MQTT.h>
+/*#pragma once
 #include <WiFi.h>
+#include <PubSubClient.h>
 
 class PubSub
 {
     private:
         WiFiClient* m_net;
-        MQTTClient m_client;
+        PubSubClient m_client;
     public:
-        PubSub(WiFiClient* p_net, const char* p_addresse);
+        PubSub(IPAddress p_adresse, WiFiClient* p_net);
         void publish(const char* p_topic, const char* p_message);
         void subscribe(const char* p_topic);
 };  
+*/

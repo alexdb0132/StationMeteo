@@ -8,5 +8,5 @@ CapteurHumidite::CapteurHumidite(CapteurProxy* p_proxy):m_proxy(p_proxy)
 
 String CapteurHumidite::AfficherHumidite()
 {
-    return String(this->m_proxy->MesurerCapteur()) + " %";
+    return String(this->m_proxy->MesurerCapteur()) ;
 }

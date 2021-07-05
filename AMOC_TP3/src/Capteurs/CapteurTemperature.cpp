@@ -8,11 +8,11 @@ CapteurTemperature::CapteurTemperature(CapteurProxy* p_proxyAir, CapteurProxy* p
 
 String CapteurTemperature::AfficherTemperatureAir()
 {
-    return String(this->m_proxyAir->MesurerCapteur()) + " °C";
+    return String(this->m_proxyAir->MesurerCapteur());
 }
 String CapteurTemperature::AfficherTemperatureEau()
 {
-    return String(this->m_proxyEau->MesurerCapteur()) + " °F";
+    return String(this->m_proxyEau->MesurerCapteur());
 }
 float CapteurTemperature::GetTemperatureAir()
 {
