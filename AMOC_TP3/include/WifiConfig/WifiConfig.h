@@ -11,7 +11,7 @@ class WifiConfig
         IPAddress* m_passerellePortail;
         IPAddress* m_masqueReseauPortail;
         WiFiManagerParameter* m_parametrePersonalise;
-        WebServer m_serveruWeb;
+        WebServer m_serveurWeb;
 
     public:
         WifiConfig();

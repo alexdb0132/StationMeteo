@@ -2,10 +2,10 @@
 
 WifiConfig::WifiConfig()
 {
-    //this->m_wifiManager.erase();
+    this->m_wifiManager.erase();
     this->m_adresseIPPortail = new IPAddress(192,168,23,1);
     this->m_passerellePortail = new IPAddress(192,168,23,1);
-    this->m_masqueReseauPortail = new IPAddress(25,255,255,0);
+    this->m_masqueReseauPortail = new IPAddress(255,255,255,0);
     this->m_parametrePersonalise = new WiFiManagerParameter("bateau super cool","bateau","modele bleu",40);
     
     this->m_wifiManager.setDebugOutput(false);
@@ -21,11 +21,12 @@ WifiConfig::WifiConfig()
     this->m_wifiManager.setParamsPage(true);
 
     this->m_wifiManager.autoConnect(this->SSIDProtail, this->motPasseAPortail);
-    this->m_serveruWeb.on(UriRegex("/.*"), []() {
+
+    this->m_serveurWeb.on(UriRegex("/.*"), []() {
         //m_serveruWeb.send(200,"text/plain","Bienvenue sur mon site web!");
     });
     if(WiFi.isConnected()){
-        this->m_serveruWeb.begin();
+        this->m_serveurWeb.begin();
         Serial.println("Connecté au réseau : " + WiFi.SSID() +
                    " avec l'adresse : " + WiFi.localIP().toString());
     }

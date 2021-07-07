@@ -1,7 +1,7 @@
 #include "./Program.h"
 
-const char ssid[] = "Valerie";
-const char pass[] = "gintonic";
+const char ssid[] = "TELUS01AD";
+const char pass[] = "McNHJeG8Pcb5";
 
 Program::Program()
 {
@@ -9,8 +9,8 @@ Program::Program()
     this->m_capteurHumidite = new CapteurHumidite(new CapteurHumiditeProxyBME280(0x76));
     this->m_capteurPression = new CapteurPression(new CapteurPressionProxyBME280(0x76));
     this->m_capteurTemperature = new CapteurTemperature(new CapteurTemperatureAirProxyBME280(0x76), new CapteurTemperatureEauProxyDS18B20(14));
-    //this->m_wifiManager = new WifiConfig();
-    WiFi.begin(ssid,pass);
+    this->m_wifiManager = new WifiConfig();
+    //WiFi.begin(ssid,pass);
     while(WiFi.status() != WL_CONNECTED)
     {
         Serial.print(".");
@@ -19,7 +19,7 @@ Program::Program()
     this->m_net = new WiFiClient();
     this->m_mqtt = new PubSubClient(*m_net);
     Serial.println(WiFi.localIP());
-    this->m_mqtt->setServer(IPAddress(192,168,224,133),1883);
+    this->m_mqtt->setServer(IPAddress(192,168,1,78),1883);
     this->m_mqtt->connect("core-mosquitto", "mqtt-mosquitto","mqtt123");
 }
 
