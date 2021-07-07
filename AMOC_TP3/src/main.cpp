@@ -6,6 +6,7 @@
 //Code officiel
 
 Program* program;
+
 void setup()
 {
   program = new Program();
@@ -27,7 +28,6 @@ void setup() {
   Serial.begin(115200);
   wifimanager = new WifiConfig();
   //mqtt = new PubSubClient(wifimanager);
-  Serial.println("mqttcreer");
 }
 void loop() {
   //mqtt->publish("bateau/aire",temp->AfficherTemperatureAir().c_str());

@@ -1,12 +1,14 @@
 #include "./WifiConfig/WifiConfig.h"
 
+
+WiFiManagerParameter m_parametrePersonalise("bateau super cool","bateau","modele bleu",40);
+
 WifiConfig::WifiConfig()
-{
+{ 
     this->m_wifiManager.erase();
     this->m_adresseIPPortail = new IPAddress(192,168,23,1);
     this->m_passerellePortail = new IPAddress(192,168,23,1);
     this->m_masqueReseauPortail = new IPAddress(255,255,255,0);
-    this->m_parametrePersonalise = new WiFiManagerParameter("bateau super cool","bateau","modele bleu",40);
     
     this->m_wifiManager.setDebugOutput(false);
     this->m_wifiManager.setAPCallback([](WiFiManager* p_wiFiManager){
@@ -14,7 +16,7 @@ WifiConfig::WifiConfig()
     });
     this->m_wifiManager.setConfigPortalTimeout(200);
 
-    this->m_wifiManager.addParameter(m_parametrePersonalise);
+    this->m_wifiManager.addParameter(&m_parametrePersonalise);
 
     this->m_wifiManager.setAPStaticIPConfig(*this->m_adresseIPPortail,*this->m_passerellePortail,*this->m_masqueReseauPortail);
 

@@ -6,11 +6,10 @@ class WifiConfig
     private:
         WiFiManager m_wifiManager;                                          
         char const* SSIDProtail = "bateau";
-        char const* motPasseAPortail = "BSC3000";
+        char const* motPasseAPortail = "BSC_3000";
         IPAddress* m_adresseIPPortail;
         IPAddress* m_passerellePortail;
         IPAddress* m_masqueReseauPortail;
-        WiFiManagerParameter* m_parametrePersonalise;
         WebServer m_serveurWeb;
 
     public:

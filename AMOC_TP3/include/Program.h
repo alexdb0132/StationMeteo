@@ -16,7 +16,6 @@ class Program
         CapteurHumidite* m_capteurHumidite;
         CapteurTemperature* m_capteurTemperature;
         CapteurPression* m_capteurPression;
-        WifiConfig* m_wifiManager;
         PubSubClient* m_mqtt;
         WiFiClient* m_net;
     public:
