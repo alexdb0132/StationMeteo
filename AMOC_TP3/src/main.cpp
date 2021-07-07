@@ -5,7 +5,7 @@
 
 
 //Code officiel
-/*
+
 Program* program;
 void setup()
 {
@@ -16,7 +16,7 @@ void loop()
 {
   program->Tick();
 }
-*/
+
 
 /* test wifiManager
 CapteurTemperature* temp;
