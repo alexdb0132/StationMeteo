@@ -1,7 +1,6 @@
-#include "./WifiConfig/WifiConfig.h"
-
-
-WiFiManagerParameter m_parametrePersonalise("bateau super cool","bateau","modele bleu",40);
+#include "./WifiConfig/WifiConfig.h" 
+char mqttServeur[40];
+WiFiManagerParameter m_parametrePersonalise("Serveur","mqttServeur",mqttServeur,40);
 
 WifiConfig::WifiConfig()
 { 
@@ -32,4 +31,10 @@ WifiConfig::WifiConfig()
         Serial.println("Connecté au réseau : " + WiFi.SSID() +
                    " avec l'adresse : " + WiFi.localIP().toString());
     }
+    this->m_addresseMqtt = strcpy(mqttServeur, m_parametrePersonalise.getValue());
+}
+
+char* WifiConfig::GetAddresseMQTT()
+{
+    return m_addresseMqtt;
 }
