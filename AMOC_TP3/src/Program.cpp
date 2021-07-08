@@ -1,8 +1,6 @@
 #include "./Program.h"
 #include "WiFiManager.h"
 #include "WebServer.h"
-const char ssid[] = "iPhone de kevin";
-const char pass[] = "12345678";
 
 WifiConfig* wifiman; 
 
@@ -13,7 +11,6 @@ Program::Program()
     this->m_capteurHumidite = new CapteurHumidite(new CapteurHumiditeProxyBME280(0x76));
     this->m_capteurPression = new CapteurPression(new CapteurPressionProxyBME280(0x76));
     this->m_capteurTemperature = new CapteurTemperature(new CapteurTemperatureAirProxyBME280(0x76), new CapteurTemperatureEauProxyDS18B20(14));
-    //WiFi.begin(ssid,pass);
     while(WiFi.status() != WL_CONNECTED)
     {
         Serial.print(".");
