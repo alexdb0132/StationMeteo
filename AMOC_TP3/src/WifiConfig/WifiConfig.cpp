@@ -13,7 +13,7 @@ WifiConfig::WifiConfig()
     this->m_wifiManager.setAPCallback([](WiFiManager* p_wiFiManager){
         Serial.println("Connexion au reseau WiFi echouee, on lance le portail !");
     });
-    this->m_wifiManager.setConfigPortalTimeout(200);
+    this->m_wifiManager.setConfigPortalTimeout(600);
 
     this->m_wifiManager.addParameter(&m_parametrePersonalise);
 
@@ -34,7 +34,11 @@ WifiConfig::WifiConfig()
     this->m_addresseMqtt = strcpy(mqttServeur, m_parametrePersonalise.getValue());
 }
 
-char* WifiConfig::GetAddresseMQTT()
+IPAddress* WifiConfig::GetAddresseMQTT()
 {
-    return m_addresseMqtt;
+    uint8_t ip[4];
+    IPAddress* addresseRetourner;
+    sscanf(m_addresseMqtt, "%u.%u.%u.%u", &ip[0],&ip[1],&ip[2],&ip[3]);
+    addresseRetourner = new IPAddress(ip);
+    return addresseRetourner;
 }

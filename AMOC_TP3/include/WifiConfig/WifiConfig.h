@@ -15,5 +15,5 @@ class WifiConfig
 
     public:
         WifiConfig();
-        char* GetAddresseMQTT();
+        IPAddress* GetAddresseMQTT();
 };

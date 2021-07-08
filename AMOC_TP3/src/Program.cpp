@@ -1,8 +1,8 @@
 #include "./Program.h"
 #include "WiFiManager.h"
 #include "WebServer.h"
-const char ssid[] = "TELUS01AD";
-const char pass[] = "McNHJeG8Pcb5";
+const char ssid[] = "iPhone de kevin";
+const char pass[] = "12345678";
 
 WifiConfig* wifiman; 
 
@@ -21,8 +21,9 @@ Program::Program()
     }
     this->m_net = new WiFiClient();
     this->m_mqtt = new PubSubClient(*m_net);
-    Serial.println(wifiman->GetAddresseMQTT());
-    this->m_mqtt->setServer(IPAddress(192,168,1,78),1883);
+
+    Serial.println(*wifiman->GetAddresseMQTT());
+    this->m_mqtt->setServer(IPAddress(172,20,10,6),1883);
     this->m_mqtt->connect("core-mosquitto", "mqtt-mosquitto","mqtt123");
 }
 
