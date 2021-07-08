@@ -23,7 +23,7 @@ Program::Program()
     this->m_mqtt = new PubSubClient(*m_net);
 
     Serial.println(*wifiman->GetAddresseMQTT());
-    this->m_mqtt->setServer(IPAddress(172,20,10,6),1883);
+    this->m_mqtt->setServer(*wifiman->GetAddresseMQTT(),1883);
     this->m_mqtt->connect("core-mosquitto", "mqtt-mosquitto","mqtt123");
 }
 
